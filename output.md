@@ -6,10 +6,10 @@ Bad things gone, say good people - 170098 views
 
 Most Popular Article Authors
 ----------------------------
-Ursula La Multa - 4742824 views
-Rudolf von Treppenwitz - 2371412 views
-Anonymous Contributor - 1185706 views
-Markoff Chaney - 1185706 views
+Ursula La Multa - 507594 views
+Rudolf von Treppenwitz - 423457 views
+Anonymous Contributor - 170098 views
+Markoff Chaney - 84557 views
 
 Request Errors Over 1%
 ----------------------
