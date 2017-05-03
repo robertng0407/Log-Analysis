@@ -1,3 +1,4 @@
+#! python2.7
 import psycopg2
 
 
