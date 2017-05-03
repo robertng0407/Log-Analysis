@@ -48,7 +48,8 @@ def author_popularity():
     query = """
                SELECT authors.name, sum(top.popularity) as views
                FROM authors,
-               (SELECT articles.author as author_id, count(log.path) as popularity
+               (SELECT articles.author as author_id,
+               count(log.path) as popularity
                FROM articles LEFT JOIN log
                ON log.path like CONCAT('%', articles.slug, '%')
                WHERE log.status != '404 NOT FOUND'
