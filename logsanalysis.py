@@ -47,13 +47,13 @@ def author_popularity():
     c = db.cursor()
     query = """
                SELECT authors.name, sum(top.popularity) as views
-               FROM authors, articles,
-               (SELECT articles.author, count(log.path) as popularity
+               FROM authors,
+               (SELECT articles.author as author_id, count(log.path) as popularity
                FROM articles LEFT JOIN log
                ON log.path like CONCAT('%', articles.slug, '%')
                WHERE log.status != '404 NOT FOUND'
                GROUP BY articles.author) as top
-               WHERE articles.author = authors.id
+               WHERE top.author_id = authors.id
                GROUP BY authors.name
                ORDER BY views DESC
            """
