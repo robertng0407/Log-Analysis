@@ -2,8 +2,13 @@
 import psycopg2
 
 
-def connect():
-    return psycopg2.connect("dbname=news")
+def connect(database_name="news"):
+    try:
+        db = psycopg2.connect("dbname={}".format(database_name))
+        cursor = db.cursor()
+        return db, cursor
+    except:
+        print("Error! Could not connect to database")
 
 
 # ===========================================================
@@ -13,8 +18,7 @@ def top_three():
     """
         Returns top three posts
     """
-    db = connect()
-    c = db.cursor()
+    db, c = connect()
     query = """
                SELECT articles.title, count(log.path) as popularity
                FROM articles LEFT JOIN log
@@ -43,8 +47,7 @@ def author_popularity():
     """
         Returns author popularity in descending order
     """
-    db = connect()
-    c = db.cursor()
+    db, c = connect()
     query = """
                SELECT authors.name, sum(top.popularity) as views
                FROM authors,
@@ -77,8 +80,7 @@ def errors():
     """
         Returns request errors over 1 percent
     """
-    db = connect()
-    c = db.cursor()
+    db, c = connect()
     query = """
                SELECT *
                FROM
